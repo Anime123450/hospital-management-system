@@ -1,58 +1,108 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Hospital Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A web application I built during my internship to manage hospital operations — patients, doctors, appointments, bed allocation, and billing.
 
-## About Laravel
+This is my first proper Laravel project. I started learning Laravel about a month ago so there's definitely stuff I'd do differently now, but I'm happy with how it turned out overall.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## What it does
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Patients** — register patients, store their info (blood group, contact, address), view history
+- **Doctors** — manage doctor profiles, specializations, consultation fees
+- **Appointments** — schedule appointments between patients and doctors, track status (Pending / Confirmed / Completed / Cancelled)
+- **Beds** — assign and track bed availability across wards (General, ICU, Private)
+- **Billing** — generate invoices, track payments, see outstanding balances
+- **Dashboard** — overview of everything with a chart showing appointment breakdown
 
-## Learning Laravel
+Also has login/register and a dark mode toggle which I added because I personally use dark mode everywhere.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tech used
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- **Laravel 13** (PHP framework — first time using it)
+- **SQLite** for the database (easier for development)
+- **Tailwind CSS** for styling
+- **Chart.js** for the dashboard donut chart
+- **Laravel Breeze** for authentication
+- **Font Awesome** for icons
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## How to run it locally
+
+You'll need PHP 8.2+, Composer, and Node.js installed.
 
 ```bash
-composer require laravel/boost --dev
+# Clone the repo
+git clone https://github.com/Anime123450/hospital-management-system.git
+cd hospital-management-system
 
-php artisan boost:install
+# Install PHP dependencies
+composer install
+
+# Install JS dependencies
+npm install
+
+# Set up environment
+cp .env.example .env
+php artisan key:generate
+
+# Run database migrations
+php artisan migrate
+
+# Build assets
+npm run build
+
+# Start the server
+php artisan serve
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Then open `http://localhost:8000`, register an account, and you're in.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Folder structure (for reference)
 
-## Code of Conduct
+```
+app/
+  Http/Controllers/     — PatientController, DoctorController, etc.
+  Models/               — Patient, Doctor, Appointment, Bed, Bill
+database/
+  migrations/           — all the table definitions
+resources/
+  views/                — Blade templates (patients/, doctors/, appointments/, etc.)
+routes/
+  web.php               — all the routes
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## What I learned building this
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- How Laravel routing and MVC works
+- Eloquent ORM — defining relationships between models (Patient hasMany Appointments, etc.)
+- Blade templating and layouts
+- Form validation in Laravel
+- How migrations work and why they're useful
+- Basic Git workflow (this was also my first time pushing a project to GitHub)
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## What I'd improve with more time
+
+- Add search and filter on more pages
+- Export patients/bills to PDF
+- Role-based access (admin vs. receptionist vs. doctor)
+- Better mobile layout
+
+---
+
+## Screenshots
+
+*(will add once the mentor reviews)*
+
+---
+
+Made by **Animesh Sharma** as part of my internship project — June 2026
