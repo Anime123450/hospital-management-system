@@ -1,6 +1,6 @@
 # Hospital Management System
 
-A web application I built during my internship to manage hospital operations — patients, doctors, appointments, bed allocation, and billing.
+A student project from my internship: a web application to manage hospital operations — patients, doctors, appointments, bed allocation, and billing.
 
 This is my first proper Laravel project. I started learning Laravel about a month ago so there's definitely stuff I'd do differently now, but I'm happy with how it turned out overall.
 
@@ -105,4 +105,4 @@ routes/
 
 ---
 
-Made by **Animesh Sharma** as part of my internship project — June 2026
+Internship project — June 2026
